@@ -1,15 +1,16 @@
+#importe de la bibliothèque CSV
 import requests
 from bs4 import BeautifulSoup
 import csv
 
-# Récupérer la page web
+# Récupérer la page web du livre à recuperer
 url = "http://books.toscrape.com/catalogue/the-dirty-little-secrets-of-getting-your-dream-job_994/index.html"
 response = requests.get(url)
 
-# Parser le contenu de la page web avec BeautifulSoup
+# Parser(annalyse et extraction à partir du html) le contenu de la page web avec BeautifulSoup
 soup = BeautifulSoup(response.text, "html.parser")
 
-# Extraire les données souhaitées
+# Extraire les données specifiques par ligne(ce quil faut récuperer)
 product_page_url = url
 upc = soup.select_one("table tr:nth-of-type(1) td").text
 title = soup.select_one("h1").text
